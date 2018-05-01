@@ -7,13 +7,12 @@ function uploadFile(e) {
     formData.append("fileToUpload", document.getElementById("fileToUpload").files[0])
 
     var xhr = new XMLHttpRequest()
-    xhr.onreadystatechange = () => {
-        if (this.readyState == 4 && this.status == 200)
-            console.log('upload complete')
+    xhr.onreadystatechange = (state) => {
+        if (state.target.readyState === 4 && state.target.status === 200)
+            console.log('Upload complete!')
     }
-    xhr.onprogress = (progress) => {
-        if (progress.lengthComputable)
-            console.log(progress.loaded / progress.total)
+    xhr.upload.onprogress = (progress) => {
+        console.log((progress.loaded / progress.total) * 100)
     }
     xhr.open("POST", "upload.php")
     xhr.send(formData); 
