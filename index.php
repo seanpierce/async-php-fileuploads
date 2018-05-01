@@ -10,5 +10,11 @@
                 <input type="submit" value="Upload Image" name="submit">
             </form>
         </div>
+        <div class="section">
+        <?php 
+            include 'functions.php';
+            getFiles();
+        ?>
+        </div>
     </body>
 </html>
